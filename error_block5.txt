@@ -1,0 +1,13 @@
+﻿* What went wrong:
+Execution failed for task ':expo-gradl
+e-plugin:expo-autolinking-settings-plu
+gin:compileKotlin'.
+> A failure occurred while executing o
+rg.jetbrains.kotlin.compilerRunner.Gra
+dleCompilerRunnerWithWorkers$GradleKot
+linCompilerWorkAction
+   > Internal compiler error. See log 
+for more details
+
+* Try:
+

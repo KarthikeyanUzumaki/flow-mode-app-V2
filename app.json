@@ -12,9 +12,7 @@
       "adaptiveIcon": {
         "backgroundColor": "#0A0A0F"
       },
-      "package": "com.flowmode.vision",
-      "compileSdkVersion": 36,
-      "targetSdkVersion": 36
+      "package": "com.flowmode.vision"
     },
     "plugins": [
       [
@@ -28,6 +26,14 @@
         "react-native-fast-tflite",
         {
           "enableAndroidGpuLibraries": true
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "kotlinVersion": "1.9.25"
+          }
         }
       ]
     ],
