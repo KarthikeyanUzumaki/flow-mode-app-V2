@@ -1,0 +1,601 @@
+﻿> Task :gradle-plugin:shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-gradle-plugin:expo-autolinking-settings-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-gradle-plugin:expo-autolinking-plugin-shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :gradle-plugin:settings-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-gradle-plugin:expo-autolinking-settings-plugin:pluginDescriptors UP-TO-DATE
+> Task :gradle-plugin:settings-plugin:pluginDescriptors UP-TO-DATE
+> Task :expo-gradle-plugin:expo-autolinking-settings-plugin:processResources UP-TO-DATE
+> Task :gradle-plugin:settings-plugin:processResources UP-TO-DATE
+> Task :gradle-plugin:shared:compileKotlin UP-TO-DATE
+> Task :gradle-plugin:shared:compileJava NO-SOURCE
+> Task :gradle-plugin:shared:processResources NO-SOURCE
+> Task :gradle-plugin:shared:classes UP-TO-DATE
+> Task :gradle-plugin:shared:jar UP-TO-DATE
+> Task :expo-gradle-plugin:expo-autolinking-plugin-shared:compileKotlin UP-TO-DATE
+> Task :expo-gradle-plugin:expo-autolinking-plugin-shared:compileJava NO-SOURCE
+> Task :expo-gradle-plugin:expo-autolinking-plugin-shared:processResources NO-SOURCE
+> Task :expo-gradle-plugin:expo-autolinking-plugin-shared:classes UP-TO-DATE
+> Task :expo-gradle-plugin:expo-autolinking-plugin-shared:jar UP-TO-DATE
+> Task :expo-gradle-plugin:expo-autolinking-settings-plugin:compileKotlin UP-TO-DATE
+> Task :expo-gradle-plugin:expo-autolinking-settings-plugin:compileJava NO-SOURCE
+> Task :expo-gradle-plugin:expo-autolinking-settings-plugin:classes UP-TO-DATE
+> Task :expo-gradle-plugin:expo-autolinking-settings-plugin:jar UP-TO-DATE
+
+> Task :gradle-plugin:settings-plugin:compileKotlin FAILED
+.\gradlew.bat : e: org.jetbrains.kotli
+n.util.FileAnalysisException: While 
+analysing C:/Embedded_project/flow-mod
+e-app/node_modules/@react-native/gradl
+e-plugin/settings-plugin/src/main/kotl
+in/com/facebook/react/ReactSettingsExt
+ension.kt:35:3: 
+java.lang.IllegalArgumentException: 
+source must not be null
+At line:1 char:50
++ ... \android" ; .\gradlew.bat 
+app:assembleDebug -x lint -x test 
+--no-buil ...
++                 ~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpec 
+   ified: (e: org.jetbrain...ust not  
+   be null:String) [], RemoteExcept   
+ ion
+    + FullyQualifiedErrorId : NativeC 
+   ommandError
+ 
+	at org.jetbrains.kotlin.util.Analysis
+ExceptionsKt.wrapIntoFileAnalysisExcep
+tionIfNeeded(AnalysisExceptions.kt:57)
+	at org.jetbrains.kotlin.fir.FirCliExc
+eptionHandler.handleExceptionOnFileAna
+lysis(Utils.kt:249)
+	at org.jetbrains.kotlin.fir.pipeline.
+AnalyseKt.runCheckers(analyse.kt:46)
+	at org.jetbrains.kotlin.fir.pipeline.
+FirUtilsKt.resolveAndCheckFir(firUtils
+.kt:77)
+	at org.jetbrains.kotlin.fir.pipeline.
+FirUtilsKt.buildResolveAndCheckFirViaL
+ightTree(firUtils.kt:88)
+	at org.jetbrains.kotlin.cli.jvm.compi
+ler.pipeline.JvmCompilerPipelineKt.com
+pileModuleToAnalyzedFir(jvmCompilerPip
+eline.kt:319)
+	at org.jetbrains.kotlin.cli.jvm.compi
+ler.pipeline.JvmCompilerPipelineKt.com
+pileModulesUsingFrontendIrAndLightTree
+(jvmCompilerPipeline.kt:118)
+	at org.jetbrains.kotlin.cli.jvm.K2JVM
+Compiler.doExecute(K2JVMCompiler.kt:14
+8)
+	at org.jetbrains.kotlin.cli.jvm.K2JVM
+Compiler.doExecute(K2JVMCompiler.kt:43
+)
+	at org.jetbrains.kotlin.cli.common.CL
+ICompiler.execImpl(CLICompiler.kt:103)
+	at org.jetbrains.kotlin.cli.common.CL
+ICompiler.execImpl(CLICompiler.kt:49)
+	at org.jetbrains.kotlin.cli.common.CL
+ITool.exec(CLITool.kt:101)
+	at org.jetbrains.kotlin.incremental.I
+ncrementalJvmCompilerRunner.runCompile
+r(IncrementalJvmCompilerRunner.kt:464)
+	at org.jetbrains.kotlin.incremental.I
+ncrementalJvmCompilerRunner.runCompile
+r(IncrementalJvmCompilerRunner.kt:73)
+	at org.jetbrains.kotlin.incremental.I
+ncrementalCompilerRunner.doCompile(Inc
+rementalCompilerRunner.kt:506)
+	at org.jetbrains.kotlin.incremental.I
+ncrementalCompilerRunner.compileImpl(I
+ncrementalCompilerRunner.kt:423)
+	at org.jetbrains.kotlin.incremental.I
+ncrementalCompilerRunner.compileNonInc
+rementally(IncrementalCompilerRunner.k
+t:301)
+	at org.jetbrains.kotlin.incremental.I
+ncrementalCompilerRunner.compile(Incre
+mentalCompilerRunner.kt:129)
+	at org.jetbrains.kotlin.daemon.Compil
+eServiceImplBase.execIncrementalCompil
+er(CompileServiceImpl.kt:675)
+	at org.jetbrains.kotlin.daemon.Compil
+eServiceImplBase.access$execIncrementa
+lCompiler(CompileServiceImpl.kt:92)
+	at org.jetbrains.kotlin.daemon.Compil
+eServiceImpl.compile(CompileServiceImp
+l.kt:1660)
+	at java.base/jdk.internal.reflect.Dir
+ectMethodHandleAccessor.invoke(Unknown
+ Source)
+	at java.base/java.lang.reflect.Method
+.invoke(Unknown Source)
+	at java.rmi/sun.rmi.server.UnicastSer
+verRef.dispatch(Unknown Source)
+	at java.rmi/sun.rmi.transport.Transpo
+rt$1.run(Unknown Source)
+	at java.rmi/sun.rmi.transport.Transpo
+rt$1.run(Unknown Source)
+	at java.base/java.security.AccessCont
+roller.doPrivileged(Unknown Source)
+	at java.rmi/sun.rmi.transport.Transpo
+rt.serviceCall(Unknown Source)
+	at java.rmi/sun.rmi.transport.tcp.TCP
+Transport.handleMessages(Unknown 
+Source)
+	at java.rmi/sun.rmi.transport.tcp.TCP
+Transport$ConnectionHandler.run0(Unkno
+wn Source)
+	at java.rmi/sun.rmi.transport.tcp.TCP
+Transport$ConnectionHandler.lambda$run
+$0(Unknown Source)
+	at java.base/java.security.AccessCont
+roller.doPrivileged(Unknown Source)
+	at java.rmi/sun.rmi.transport.tcp.TCP
+Transport$ConnectionHandler.run(Unknow
+n Source)
+	at java.base/java.util.concurrent.Thr
+eadPoolExecutor.runWorker(Unknown 
+Source)
+	at java.base/java.util.concurrent.Thr
+eadPoolExecutor$Worker.run(Unknown 
+Source)
+	at java.base/java.lang.Thread.run(Unk
+nown Source)
+Caused by: 
+java.lang.IllegalArgumentException: 
+source must not be null
+	at org.jetbrains.kotlin.diagnostics.K
+tDiagnosticReportHelpersKt.requireNotN
+ull(KtDiagnosticReportHelpers.kt:68)
+	at org.jetbrains.kotlin.diagnostics.K
+tDiagnosticReportHelpersKt.reportOn(Kt
+DiagnosticReportHelpers.kt:39)
+	at org.jetbrains.kotlin.diagnostics.K
+tDiagnosticReportHelpersKt.reportOn$de
+fault(KtDiagnosticReportHelpers.kt:31)
+	at org.jetbrains.kotlin.fir.analysis.
+checkers.expression.FirIncompatibleCla
+ssExpressionChecker.checkSourceElement
+(FirIncompatibleClassExpressionChecker
+.kt:50)
+	at org.jetbrains.kotlin.fir.analysis.
+checkers.expression.FirIncompatibleCla
+ssExpressionChecker.checkType$checkers
+(FirIncompatibleClassExpressionChecker
+.kt:42)
+	at org.jetbrains.kotlin.fir.analysis.
+checkers.type.FirIncompatibleClassType
+Checker.check(FirIncompatibleClassType
+Checker.kt:17)
+	at org.jetbrains.kotlin.fir.analysis.
+collectors.components.TypeCheckersDiag
+nosticComponent.check(TypeCheckersDiag
+nosticComponent.kt:81)
+	at org.jetbrains.kotlin.fir.analysis.
+collectors.components.TypeCheckersDiag
+nosticComponent.visitResolvedTypeRef(T
+ypeCheckersDiagnosticComponent.kt:53)
+	at org.jetbrains.kotlin.fir.analysis.
+collectors.components.TypeCheckersDiag
+nosticComponent.visitResolvedTypeRef(T
+ypeCheckersDiagnosticComponent.kt:19)
+	at org.jetbrains.kotlin.fir.types.Fir
+ResolvedTypeRef.accept(FirResolvedType
+Ref.kt:28)
+	at org.jetbrains.kotlin.fir.analysis.
+collectors.CheckerRunningDiagnosticCol
+lectorVisitor.checkElement(CheckerRunn
+ingDiagnosticCollectorVisitor.kt:24)
+	at org.jetbrains.kotlin.fir.analysis.
+collectors.AbstractDiagnosticCollector
+Visitor.visitResolvedTypeRef(AbstractD
+iagnosticCollectorVisitor.kt:248)
+	at org.jetbrains.kotlin.fir.analysis.
+collectors.AbstractDiagnosticCollector
+Visitor.visitResolvedTypeRef(AbstractD
+iagnosticCollectorVisitor.kt:30)
+	at org.jetbrains.kotlin.fir.types.Fir
+ResolvedTypeRef.accept(FirResolvedType
+Ref.kt:28)
+	at org.jetbrains.kotlin.fir.declarati
+ons.impl.FirSimpleFunctionImpl.acceptC
+hildren(FirSimpleFunctionImpl.kt:63)
+	at org.jetbrains.kotlin.fir.analysis.
+collectors.AbstractDiagnosticCollector
+Visitor.visitNestedElements(AbstractDi
+agnosticCollectorVisitor.kt:38)
+	at org.jetbrains.kotlin.fir.analysis.
+collectors.AbstractDiagnosticCollector
+Visitor.visitWithDeclarationAndReceive
+r(AbstractDiagnosticCollectorVisitor.k
+t:311)
+	at org.jetbrains.kotlin.fir.analysis.
+collectors.AbstractDiagnosticCollector
+Visitor.visitSimpleFunction(AbstractDi
+agnosticCollectorVisitor.kt:118)
+	at org.jetbrains.kotlin.fir.analysis.
+collectors.AbstractDiagnosticCollector
+Visitor.visitSimpleFunction(AbstractDi
+agnosticCollectorVisitor.kt:30)
+	at org.jetbrains.kotlin.fir.declarati
+ons.FirSimpleFunction.accept(FirSimple
+Function.kt:51)
+	at org.jetbrains.kotlin.fir.declarati
+ons.impl.FirRegularClassImpl.acceptChi
+ldren(FirRegularClassImpl.kt:63)
+	at org.jetbrains.kotlin.fir.analysis.
+collectors.AbstractDiagnosticCollector
+Visitor.visitNestedElements(AbstractDi
+agnosticCollectorVisitor.kt:38)
+	at org.jetbrains.kotlin.fir.analysis.
+collectors.AbstractDiagnosticCollector
+Visitor.visitWithDeclarationAndReceive
+r(AbstractDiagnosticCollectorVisitor.k
+t:311)
+	at org.jetbrains.kotlin.fir.analysis.
+collectors.AbstractDiagnosticCollector
+Visitor.visitClassAndChildren(Abstract
+DiagnosticCollectorVisitor.kt:87)
+	at org.jetbrains.kotlin.fir.analysis.
+collectors.AbstractDiagnosticCollector
+Visitor.visitRegularClass(AbstractDiag
+nosticCollectorVisitor.kt:92)
+	at org.jetbrains.kotlin.fir.analysis.
+collectors.AbstractDiagnosticCollector
+Visitor.visitRegularClass(AbstractDiag
+nosticCollectorVisitor.kt:30)
+	at org.jetbrains.kotlin.fir.declarati
+ons.FirRegularClass.accept(FirRegularC
+lass.kt:48)
+	at org.jetbrains.kotlin.fir.declarati
+ons.impl.FirFileImpl.acceptChildren(Fi
+rFileImpl.kt:57)
+	at org.jetbrains.kotlin.fir.analysis.
+collectors.AbstractDiagnosticCollector
+Visitor.visitNestedElements(AbstractDi
+agnosticCollectorVisitor.kt:38)
+	at org.jetbrains.kotlin.fir.analysis.
+collectors.AbstractDiagnosticCollector
+Visitor.visitFile(AbstractDiagnosticCo
+llectorVisitor.kt:1151)
+	at org.jetbrains.kotlin.fir.analysis.
+collectors.AbstractDiagnosticCollector
+Visitor.visitFile(AbstractDiagnosticCo
+llectorVisitor.kt:30)
+	at org.jetbrains.kotlin.fir.declarati
+ons.FirFile.accept(FirFile.kt:42)
+	at org.jetbrains.kotlin.fir.analysis.
+collectors.AbstractDiagnosticCollector
+.collectDiagnostics(AbstractDiagnostic
+Collector.kt:36)
+	at org.jetbrains.kotlin.fir.pipeline.
+AnalyseKt.runCheckers(analyse.kt:34)
+	... 33 more
+
+e: file:///C:/Users/karth/.gradle/cach
+es/9.0.0/generated-gradle-jars/gradle-
+api-9.0.0.jar!/META-INF/bean-serializa
+tion-services.kotlin_module Module 
+was compiled with an incompatible 
+version of Kotlin. The binary version 
+of its metadata is 2.2.0, expected 
+version is 2.0.0.
+e: file:///C:/Users/karth/.gradle/cach
+es/9.0.0/generated-gradle-jars/gradle-
+api-9.0.0.jar!/META-INF/configuration-
+cache-base.kotlin_module Module was 
+compiled with an incompatible version 
+of Kotlin. The binary version of its 
+metadata is 2.2.0, expected version 
+is 2.0.0.
+e: file:///C:/Users/karth/.gradle/cach
+es/9.0.0/generated-gradle-jars/gradle-
+api-9.0.0.jar!/META-INF/configuration-
+cache.kotlin_module Module was 
+compiled with an incompatible version 
+of Kotlin. The binary version of its 
+metadata is 2.2.0, expected version 
+is 2.0.0.
+e: file:///C:/Users/karth/.gradle/cach
+es/9.0.0/generated-gradle-jars/gradle-
+api-9.0.0.jar!/META-INF/configuration-
+problems-base.kotlin_module Module 
+was compiled with an incompatible 
+version of Kotlin. The binary version 
+of its metadata is 2.2.0, expected 
+version is 2.0.0.
+e: file:///C:/Users/karth/.gradle/cach
+es/9.0.0/generated-gradle-jars/gradle-
+api-9.0.0.jar!/META-INF/core-kotlin-ex
+tensions.kotlin_module Module was 
+compiled with an incompatible version 
+of Kotlin. The binary version of its 
+metadata is 2.2.0, expected version 
+is 2.0.0.
+e: file:///C:/Users/karth/.gradle/cach
+es/9.0.0/generated-gradle-jars/gradle-
+api-9.0.0.jar!/META-INF/core-serializa
+tion-codecs.kotlin_module Module was 
+compiled with an incompatible version 
+of Kotlin. The binary version of its 
+metadata is 2.2.0, expected version 
+is 2.0.0.
+e: file:///C:/Users/karth/.gradle/cach
+es/9.0.0/generated-gradle-jars/gradle-
+api-9.0.0.jar!/META-INF/declarative-ds
+l-core.kotlin_module Module was 
+compiled with an incompatible version 
+of Kotlin. The binary version of its 
+metadata is 2.2.0, expected version 
+is 2.0.0.
+e: file:///C:/Users/karth/.gradle/cach
+es/9.0.0/generated-gradle-jars/gradle-
+api-9.0.0.jar!/META-INF/declarative-ds
+l-evaluator.kotlin_module Module was 
+compiled with an incompatible version 
+of Kotlin. The binary version of its 
+metadata is 2.2.0, expected version 
+is 2.0.0.
+e: file:///C:/Users/karth/.gradle/cach
+es/9.0.0/generated-gradle-jars/gradle-
+api-9.0.0.jar!/META-INF/declarative-ds
+l-internal-utils.kotlin_module Module 
+was compiled with an incompatible 
+version of Kotlin. The binary version 
+of its metadata is 2.2.0, expected 
+version is 2.0.0.
+e: file:///C:/Users/karth/.gradle/cach
+es/9.0.0/generated-gradle-jars/gradle-
+api-9.0.0.jar!/META-INF/declarative-ds
+l-provider.kotlin_module Module was 
+compiled with an incompatible version 
+of Kotlin. The binary version of its 
+metadata is 2.2.0, expected version 
+is 2.0.0.
+e: file:///C:/Users/karth/.gradle/cach
+es/9.0.0/generated-gradle-jars/gradle-
+api-9.0.0.jar!/META-INF/declarative-ds
+l-tooling-models.kotlin_module Module 
+was compiled with an incompatible 
+version of Kotlin. The binary version 
+of its metadata is 2.2.0, expected 
+version is 2.0.0.
+e: file:///C:/Users/karth/.gradle/cach
+es/9.0.0/generated-gradle-jars/gradle-
+api-9.0.0.jar!/META-INF/dependency-man
+agement-serialization-codecs.kotlin_mo
+dule Module was compiled with an 
+incompatible version of Kotlin. The 
+binary version of its metadata is 
+2.2.0, expected version is 2.0.0.
+e: file:///C:/Users/karth/.gradle/cach
+es/9.0.0/generated-gradle-jars/gradle-
+api-9.0.0.jar!/META-INF/encryption-ser
+vices.kotlin_module Module was 
+compiled with an incompatible version 
+of Kotlin. The binary version of its 
+metadata is 2.2.0, expected version 
+is 2.0.0.
+e: file:///C:/Users/karth/.gradle/cach
+es/9.0.0/generated-gradle-jars/gradle-
+api-9.0.0.jar!/META-INF/flow-services.
+kotlin_module Module was compiled 
+with an incompatible version of 
+Kotlin. The binary version of its 
+metadata is 2.2.0, expected version 
+is 2.0.0.
+e: file:///C:/Users/karth/.gradle/cach
+es/9.0.0/generated-gradle-jars/gradle-
+api-9.0.0.jar!/META-INF/graph-isolatio
+n.kotlin_module Module was compiled 
+with an incompatible version of 
+Kotlin. The binary version of its 
+metadata is 2.2.0, expected version 
+is 2.0.0.
+e: file:///C:/Users/karth/.gradle/cach
+es/9.0.0/generated-gradle-jars/gradle-
+api-9.0.0.jar!/META-INF/graph-serializ
+ation.kotlin_module Module was 
+compiled with an incompatible version 
+of Kotlin. The binary version of its 
+metadata is 2.2.0, expected version 
+is 2.0.0.
+e: file:///C:/Users/karth/.gradle/cach
+es/9.0.0/generated-gradle-jars/gradle-
+api-9.0.0.jar!/META-INF/guava-serializ
+ation-codecs.kotlin_module Module was 
+compiled with an incompatible version 
+of Kotlin. The binary version of its 
+metadata is 2.2.0, expected version 
+is 2.0.0.
+e: file:///C:/Users/karth/.gradle/cach
+es/9.0.0/generated-gradle-jars/gradle-
+api-9.0.0.jar!/META-INF/isolated-actio
+n-services.kotlin_module Module was 
+compiled with an incompatible version 
+of Kotlin. The binary version of its 
+metadata is 2.2.0, expected version 
+is 2.0.0.
+e: file:///C:/Users/karth/.gradle/cach
+es/9.0.0/generated-gradle-jars/gradle-
+api-9.0.0.jar!/META-INF/kotlinx-serial
+ization-core.kotlin_module Module was 
+compiled with an incompatible version 
+of Kotlin. The binary version of its 
+metadata is 2.2.0, expected version 
+is 2.0.0.
+e: file:///C:/Users/karth/.gradle/cach
+es/9.0.0/generated-gradle-jars/gradle-
+api-9.0.0.jar!/META-INF/kotlinx-serial
+ization-json.kotlin_module Module was 
+compiled with an incompatible version 
+of Kotlin. The binary version of its 
+metadata is 2.2.0, expected version 
+is 2.0.0.
+e: file:///C:/Users/karth/.gradle/cach
+es/9.0.0/generated-gradle-jars/gradle-
+api-9.0.0.jar!/META-INF/problems.kotli
+n_module Module was compiled with an 
+incompatible version of Kotlin. The 
+binary version of its metadata is 
+2.2.0, expected version is 2.0.0.
+e: file:///C:/Users/karth/.gradle/cach
+es/9.0.0/generated-gradle-jars/gradle-
+api-9.0.0.jar!/META-INF/stdlib-kotlin-
+extensions.kotlin_module Module was 
+compiled with an incompatible version 
+of Kotlin. The binary version of its 
+metadata is 2.2.0, expected version 
+is 2.0.0.
+e: file:///C:/Users/karth/.gradle/cach
+es/9.0.0/generated-gradle-jars/gradle-
+api-9.0.0.jar!/META-INF/stdlib-seriali
+zation-codecs.kotlin_module Module 
+was compiled with an incompatible 
+version of Kotlin. The binary version 
+of its metadata is 2.2.0, expected 
+version is 2.0.0.
+e: file:///C:/Users/karth/.gradle/cach
+es/9.0.0/generated-gradle-jars/gradle-
+api-9.0.0.jar!/META-INF/toolchains-jvm
+.kotlin_module Module was compiled 
+with an incompatible version of 
+Kotlin. The binary version of its 
+metadata is 2.2.0, expected version 
+is 2.0.0.
+e: file:///C:/Users/karth/.gradle/wrap
+per/dists/gradle-9.0.0-bin/d6wjpkvcgsg
+3oed0qlfss3wgl/gradle-9.0.0/lib/kotlin
+-reflect-2.2.0.jar!/META-INF/descripto
+rs.jvm.kotlin_module Module was 
+compiled with an incompatible version 
+of Kotlin. The binary version of its 
+metadata is 2.2.0, expected version 
+is 2.0.0.
+e: file:///C:/Users/karth/.gradle/wrap
+per/dists/gradle-9.0.0-bin/d6wjpkvcgsg
+3oed0qlfss3wgl/gradle-9.0.0/lib/kotlin
+-reflect-2.2.0.jar!/META-INF/descripto
+rs.runtime.kotlin_module Module was 
+compiled with an incompatible version 
+of Kotlin. The binary version of its 
+metadata is 2.2.0, expected version 
+is 2.0.0.
+e: file:///C:/Users/karth/.gradle/wrap
+per/dists/gradle-9.0.0-bin/d6wjpkvcgsg
+3oed0qlfss3wgl/gradle-9.0.0/lib/kotlin
+-reflect-2.2.0.jar!/META-INF/deseriali
+zation.common.jvm.kotlin_module 
+Module was compiled with an 
+incompatible version of Kotlin. The 
+binary version of its metadata is 
+2.2.0, expected version is 2.0.0.
+e: file:///C:/Users/karth/.gradle/wrap
+per/dists/gradle-9.0.0-bin/d6wjpkvcgsg
+3oed0qlfss3wgl/gradle-9.0.0/lib/kotlin
+-reflect-2.2.0.jar!/META-INF/deseriali
+zation.common.kotlin_module Module 
+was compiled with an incompatible 
+version of Kotlin. The binary version 
+of its metadata is 2.2.0, expected 
+version is 2.0.0.
+e: file:///C:/Users/karth/.gradle/wrap
+per/dists/gradle-9.0.0-bin/d6wjpkvcgsg
+3oed0qlfss3wgl/gradle-9.0.0/lib/kotlin
+-reflect-2.2.0.jar!/META-INF/deseriali
+zation.kotlin_module Module was 
+compiled with an incompatible version 
+of Kotlin. The binary version of its 
+metadata is 2.2.0, expected version 
+is 2.0.0.
+e: file:///C:/Users/karth/.gradle/wrap
+per/dists/gradle-9.0.0-bin/d6wjpkvcgsg
+3oed0qlfss3wgl/gradle-9.0.0/lib/kotlin
+-reflect-2.2.0.jar!/META-INF/kotlin-me
+tadata-jvm.kotlin_module Module was 
+compiled with an incompatible version 
+of Kotlin. The binary version of its 
+metadata is 2.2.0, expected version 
+is 2.0.0.
+e: file:///C:/Users/karth/.gradle/wrap
+per/dists/gradle-9.0.0-bin/d6wjpkvcgsg
+3oed0qlfss3wgl/gradle-9.0.0/lib/kotlin
+-reflect-2.2.0.jar!/META-INF/kotlin-me
+tadata.kotlin_module Module was 
+compiled with an incompatible version 
+of Kotlin. The binary version of its 
+metadata is 2.2.0, expected version 
+is 2.0.0.
+e: file:///C:/Users/karth/.gradle/wrap
+per/dists/gradle-9.0.0-bin/d6wjpkvcgsg
+3oed0qlfss3wgl/gradle-9.0.0/lib/kotlin
+-reflect-2.2.0.jar!/META-INF/kotlin-re
+flection.kotlin_module Module was 
+compiled with an incompatible version 
+of Kotlin. The binary version of its 
+metadata is 2.2.0, expected version 
+is 2.0.0.
+e: file:///C:/Users/karth/.gradle/wrap
+per/dists/gradle-9.0.0-bin/d6wjpkvcgsg
+3oed0qlfss3wgl/gradle-9.0.0/lib/kotlin
+-reflect-2.2.0.jar!/META-INF/metadata.
+jvm.kotlin_module Module was compiled 
+with an incompatible version of 
+Kotlin. The binary version of its 
+metadata is 2.2.0, expected version 
+is 2.0.0.
+e: file:///C:/Users/karth/.gradle/wrap
+per/dists/gradle-9.0.0-bin/d6wjpkvcgsg
+3oed0qlfss3wgl/gradle-9.0.0/lib/kotlin
+-stdlib-2.2.0.jar!/META-INF/kotlin-std
+lib-jdk7.kotlin_module Module was 
+compiled with an incompatible version 
+of Kotlin. The binary version of its 
+metadata is 2.2.0, expected version 
+is 2.0.0.
+e: file:///C:/Users/karth/.gradle/wrap
+per/dists/gradle-9.0.0-bin/d6wjpkvcgsg
+3oed0qlfss3wgl/gradle-9.0.0/lib/kotlin
+-stdlib-2.2.0.jar!/META-INF/kotlin-std
+lib-jdk8.kotlin_module Module was 
+compiled with an incompatible version 
+of Kotlin. The binary version of its 
+metadata is 2.2.0, expected version 
+is 2.0.0.
+e: file:///C:/Users/karth/.gradle/wrap
+per/dists/gradle-9.0.0-bin/d6wjpkvcgsg
+3oed0qlfss3wgl/gradle-9.0.0/lib/kotlin
+-stdlib-2.2.0.jar!/META-INF/kotlin-std
+lib.kotlin_module Module was compiled 
+with an incompatible version of 
+Kotlin. The binary version of its 
+metadata is 2.2.0, expected version 
+is 2.0.0.
+
+FAILURE: Build failed with an 
+exception.
+
+* What went wrong:
+Execution failed for task ':gradle-plu
+gin:settings-plugin:compileKotlin'.
+> A failure occurred while executing o
+rg.jetbrains.kotlin.compilerRunner.Gra
+dleCompilerRunnerWithWorkers$GradleKot
+linCompilerWorkAction
+   > Internal compiler error. See log 
+for more details
+
+* Try:
+> Run with --stacktrace option to get 
+the stack trace.
+> Run with --info or --debug option 
+to get more log output.
+> Run with --scan to generate a Build 
+Scan (Powered by Develocity).
+> Get more help at 
+https://help.gradle.org.
+
+BUILD FAILED in 3s
+11 actionable tasks: 1 executed, 10 up-to-date
