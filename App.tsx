@@ -1,3 +1,4 @@
+import 'react-native-reanimated'; // <--- MUST BE LINE 1
 import React from 'react';
 import { StyleSheet, StatusBar } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';

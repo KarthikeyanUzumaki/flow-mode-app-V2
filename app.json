@@ -3,42 +3,32 @@
     "name": "Flow Mode",
     "slug": "flow-mode-app",
     "version": "1.0.0",
-    "orientation": "portrait",
-    "userInterfaceStyle": "dark",
-    "splash": {
-      "backgroundColor": "#0A0A0F"
-    },
-    "android": {
-      "adaptiveIcon": {
-        "backgroundColor": "#0A0A0F"
-      },
-      "package": "com.flowmode.vision"
-    },
     "plugins": [
-      [
-        "react-native-vision-camera",
-        {
-          "cameraPermissionText": "Flow Mode needs camera access for real-time food detection.",
-          "enableMicrophonePermission": false
-        }
-      ],
-      [
-        "react-native-fast-tflite",
-        {
-          "enableAndroidGpuLibraries": true
-        }
-      ],
       [
         "expo-build-properties",
         {
           "android": {
-            "kotlinVersion": "1.9.24"
+            "kotlinVersion": "1.9.25"
           }
         }
-      ]
+      ],
+      [
+        "react-native-vision-camera",
+        {
+          "cameraPermissionText": "Flow Mode needs camera access for real-time food detection.",
+          "enableMicrophonePermission": false,
+          "enableFrameProcessors": true
+        }
+      ],
+      "react-native-fast-tflite",
+      "expo-asset",
+      "expo-font"
     ],
-    "assetBundlePatterns": [
-      "assets/**"
-    ]
+    "android": {
+      "permissions": [
+        "android.permission.CAMERA"
+      ],
+      "package": "com.karthikuzumaki.flowmodeapp"
+    }
   }
 }

@@ -1,79 +1,109 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { StyleSheet, View, Text, ActivityIndicator } from 'react-native';
-import { Camera, useCameraDevice, useCameraPermission, useFrameProcessor } from 'react-native-vision-camera';
+import { 
+  Camera, 
+  useCameraDevice, 
+  useCameraPermission, 
+  useFrameProcessor 
+} from 'react-native-vision-camera';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useTensorflowModel } from 'react-native-fast-tflite';
-import { runOnJS } from 'react-native-reanimated';
+import { useResizePlugin } from 'vision-camera-resize-plugin';
+import { Worklets } from 'react-native-worklets-core';
+// UI Components (Ensure these paths match your project structure)
 import { DetectionOverlay } from './DetectionOverlay';
 import { FlowStatusBar } from './StatusBar';
-import type { Detection, ModelState } from '../types/detection';
+import type { Detection } from '../types/detection';
+import { useFlowVisionModel } from '../hooks/useFlowVisionModel';
+import { FOOD_LABELS } from '../constants/labels';
+
+const THREE_CLASS_LABELS = ['Pineapple', 'Papaya', 'Dosa'] as const;
 
 export const CameraScreen = () => {
   const { hasPermission, requestPermission } = useCameraPermission();
   const device = useCameraDevice('back');
   const insets = useSafeAreaInsets();
+  const { resize } = useResizePlugin();
 
   const [detections, setDetections] = useState<Detection[]>([]);
   const [fps, setFps] = useState(60);
 
-  // 1. Load the TFLite Model from your local assets
-  // (Make sure the model is actually in your assets folder!)
-  const tfPlugin = useTensorflowModel(require('../../assets/flow_mode_vision.tflite'));
-  const model = tfPlugin.state === 'loaded' ? tfPlugin.model : undefined;
+  // 1. Load the TFLite Model via shared hook
+  const { model, modelState } = useFlowVisionModel();
 
-  const modelState: ModelState = { 
-    status: tfPlugin.state === 'error' ? 'error' : tfPlugin.state === 'loaded' ? 'loaded' : 'loading' 
-  };
-
-  // 2. Helper to safely update React state from the background C++ thread
-  const updateDetections = (newDetections: Detection[]) => {
+  // UI Update function to be called from the Worklet thread
+  const updateUI = useCallback((newDetections: Detection[]) => {
     setDetections(newDetections);
-  };
+  }, []);
+  const updateUIOnJS = Worklets.createRunOnJS(updateUI);
 
-  // 3. The Edge AI Vision Loop (Runs 60 times a second)
+  // 2. The Vision Loop (Frame Processor)
   const frameProcessor = useFrameProcessor((frame) => {
     'worklet';
-    if (model == null) return;
+    
+    // Safety check for model availability inside the Worklet
+    if (model == null || typeof model.runSync !== 'function') return;
 
     try {
-      // Pass the raw camera frame buffer into the TFLite model
-      // WARNING: Read the "Gotcha" section below regarding this step!
-      const outputs = model.runSync([frame.toArrayBuffer()]);
+      // STEP A: Resize to 224x224 RGB tensor. Most mobile classifiers are uint8.
+      const resized = resize(frame, {
+        scale: { width: 224, height: 224 },
+        pixelFormat: 'rgb',
+        dataType: 'uint8',
+      });
 
-      // --- TENSOR PARSING ---
-      // This is where you extract the data based on how you trained it.
-      // E.g., const rawBoxes = outputs[0]; const rawScores = outputs[1];
+      // STEP B: Run Inference
+      const outputs = model.runSync([resized]);
+      const probabilities = outputs[0] as Float32Array;
+
+      if (!probabilities || probabilities.length === 0) {
+        // No valid output, clear detections
+        updateUIOnJS([]);
+        return;
+      }
+
+      // STEP C: Find the Max Probability (Classification Logic)
+      let maxIdx = 0;
+      let maxProb = 0;
+      for (let i = 0; i < probabilities.length; i++) {
+        if (probabilities[i] > maxProb) {
+          maxProb = probabilities[i];
+          maxIdx = i;
+        }
+      }
+
+      // Use 3-class labels for custom model outputs, fallback to generic map.
+      const activeLabels =
+        probabilities.length === 3 ? THREE_CLASS_LABELS : FOOD_LABELS;
+      const safeIdx = Math.min(maxIdx, activeLabels.length - 1);
+      const topLabel = activeLabels[safeIdx] ?? `Class ${maxIdx}`;
+
+      // STEP D: Trigger UI Update if confidence is > 50%
+      if (maxProb > 0.5) {
+        updateUIOnJS([
+          {
+            id: 'food-item',
+            label: topLabel,
+            confidence: maxProb,
+            bbox: { x: 0.15, y: 0.25, width: 0.7, height: 0.5 } // Focus box
+          }
+        ]);
+      } else {
+        updateUIOnJS([]);
+      }
       
-      const parsedDetections: Detection[] = []; 
-      
-      // Send the parsed data back to the main UI thread to draw the boxes
-      runOnJS(updateDetections)(parsedDetections);
-      
-    } catch (error) {
-      console.error("Inference Error:", error);
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : 'Unknown Vision Error';
+      console.log("Worklet Error:", msg);
     }
   }, [model]);
 
+  // Request permission on mount
   useEffect(() => {
     if (!hasPermission) requestPermission();
   }, [hasPermission, requestPermission]);
 
-  if (!hasPermission) {
-    return (
-      <View style={styles.center}>
-        <Text style={styles.text}>Requesting Camera Permission...</Text>
-      </View>
-    );
-  }
-
-  if (device == null) {
-    return (
-      <View style={styles.center}>
-        <ActivityIndicator size="large" color="#00E5FF" />
-        <Text style={styles.text}>Initializing Camera...</Text>
-      </View>
-    );
-  }
+  if (!hasPermission) return <View style={styles.center}><Text style={styles.text}>Camera Permission Required</Text></View>;
+  if (device == null) return <View style={styles.center}><ActivityIndicator size="large" color="#00E5FF" /></View>;
 
   return (
     <View style={styles.container}>
@@ -81,7 +111,7 @@ export const CameraScreen = () => {
         style={StyleSheet.absoluteFill}
         device={device}
         isActive={true}
-        pixelFormat="yuv" // TFLite models usually prefer 'rgb', see note below
+        pixelFormat="rgb" 
         frameProcessor={frameProcessor}
       />
       
@@ -101,5 +131,5 @@ export const CameraScreen = () => {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#000' },
   center: { flex: 1, backgroundColor: '#0A0A0F', justifyContent: 'center', alignItems: 'center' },
-  text: { color: '#fff', fontSize: 16, fontWeight: '500' },
+  text: { color: '#fff', fontSize: 16 },
 });
