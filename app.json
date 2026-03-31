@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "Flow Mode",
+    "slug": "flow-mode-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "backgroundColor": "#0A0A0F"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#0A0A0F"
+      },
+      "package": "com.flowmode.vision",
+      "compileSdkVersion": 36,
+      "targetSdkVersion": 36
+    },
+    "plugins": [
+      [
+        "react-native-vision-camera",
+        {
+          "cameraPermissionText": "Flow Mode needs camera access for real-time food detection.",
+          "enableMicrophonePermission": false
+        }
+      ],
+      [
+        "react-native-fast-tflite",
+        {
+          "enableAndroidGpuLibraries": true
+        }
+      ]
+    ],
+    "assetBundlePatterns": [
+      "assets/**"
+    ]
+  }
+}
